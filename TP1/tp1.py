@@ -1,4 +1,4 @@
-from TP1.args import parse_args
+from args import parse_args
 import numpy as np
 
 def read_sample(filename):
