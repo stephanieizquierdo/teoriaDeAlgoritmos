@@ -31,10 +31,10 @@ def scaloni_ganancia(e_i, s_i):
         if columna==0 or columna==1:
           matriz[fila][columna] = min(s_i[fila], e_i[columna])
         else:
-          matriz[fila][columna] = min(s_i[fila], e_i[columna])+ matriz[fila][columna-2]
+          matriz[fila][columna] = min(s_i[fila], e_i[columna]) + max(matriz[:, columna-2])
       elif fila > columna: continue
       else:
-          matriz[fila][columna] = min(s_i[fila], e_i[columna]) + matriz[fila-1][columna-1]
+          matriz[fila][columna] = min(s_i[fila], e_i[columna]) + matriz[fila-1, columna-1]
   return matriz
 
 def scaloni_get_max_ganancia(opt):
@@ -65,8 +65,6 @@ if __name__ == '__main__':
 
   ganancia = scaloni_ganancia(e_i, s_i)
   plan = scaloni_plan(ganancia)
-
-  print(ganancia)
   
   print(f"Ganancia máxima: {scaloni_get_max_ganancia(ganancia)}")
   print(f"Plan de entrenamiento: {plan}")
