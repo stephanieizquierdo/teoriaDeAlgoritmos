@@ -18,6 +18,14 @@ Para ejecutar el programa:
 python tp2.py samples/3.txt
 ```
 
+## Tests
+
+Para ejecutar el programa:
+
+```bash
+python -m unittest
+```
+
 Para ejecutar los notebooks, recomendamos abrirlos en Google Colab
 
 ## Links útiles:

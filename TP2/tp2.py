@@ -17,6 +17,8 @@ def read_file(path):
   for dia in rango_cant_dias:
     e_i.append(int(leido[dia+ 1]))
     s_i.append(int(leido[int(cant_dias)+dia+1]))
+  
+  file.close()
 
   return e_i, s_i, cant_dias
 
