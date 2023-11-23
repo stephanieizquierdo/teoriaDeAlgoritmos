@@ -11,11 +11,21 @@ def read_file(path):
     
     return jugadores
 
-def jugadores_optimos_programacion_lineal(jugadores):
+
+
+def jugadores_optimos_programacion_lineal(jugadores_segun_preferencias, todos_los_jugadores):
     problema = pulp.LpProblem("jugadores_seleccionados", pulp.LpMinimize)
+    variables_jugadores= []
+    
+    for jugador in jugadores:
+        variables_jugadores.append(pulp.LpVariable(jugador, cat="Binary"))
+
+
     problema.solve()
     
 if __name__ == '__main__':
     args = parse_args()
-    jugadores = read_file(args.filename)
+    jugadores_segun_preferencias = read_file(args.filename)
+    todos_los_jugadores = [set(preferencia) for preferencia in jugadores_segun_preferencias]
+    jugadores_optimos_programacion_lineal
     
