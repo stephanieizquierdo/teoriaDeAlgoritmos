@@ -1,15 +1,5 @@
 from args import parse_args
-
-
-def read_file(path):
-    jugadores = []
-    with open(path, 'r') as file:
-        for linea in file:
-            jug_x_periodista = linea.strip().split(',')
-    
-            jugadores.append(jug_x_periodista)
-    
-    return jugadores
+from reader import read_file
 
 
 def backtracking_jugadores_optimos(jugadores_matriz, periodista, solucion_optima, solucion_actual):
@@ -32,15 +22,6 @@ def backtracking_jugadores_optimos(jugadores_matriz, periodista, solucion_optima
 if __name__ == '__main__':
     args = parse_args()
     jugadores = read_file(args.filename)
-
-    print(f"Jugadores: {jugadores}")
-
-    matriz = [
-        ["hola", "como", "bien"],
-        ["estas", "bien", "vos", "como"],
-        ["bueno", "quizas", "bien", "vos"],
-        ["ah", "bueno", "gracias", "como"]
-    ]
 
     solucion = set()
     solucion = backtracking_jugadores_optimos(jugadores, 0, solucion, set())

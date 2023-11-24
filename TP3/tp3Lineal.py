@@ -1,15 +1,7 @@
 from args import parse_args
 from pulp import *
+from reader import read_file
 
-def read_file(path):
-    jugadores = []
-    with open(path, 'r') as file:
-        for linea in file:
-            jug_x_periodista = linea.strip().split(',')
-    
-            jugadores.append(jug_x_periodista)
-    
-    return jugadores
 
 def jugadores_optimos_programacion_lineal(jugadores_segun_preferencias, todos_los_jugadores):
     problema = LpProblem("jugadores_optimos", LpMinimize)
