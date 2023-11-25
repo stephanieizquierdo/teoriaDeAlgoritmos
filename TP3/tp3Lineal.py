@@ -3,7 +3,13 @@ from pulp import *
 from reader import read_file
 
 
-def jugadores_optimos_programacion_lineal(jugadores_segun_preferencias, todos_los_jugadores):
+def programacion_lineal_jugadores(jugadores):
+    jugadores_segun_preferencias = jugadores
+    todos_los_jugadores = set()
+    for preferencia in jugadores_segun_preferencias:
+        for jugador in preferencia:
+            todos_los_jugadores.add(jugador)
+
     problema = LpProblem("jugadores_optimos", LpMinimize)
     jugadores_vars = {jugador: LpVariable(f"x_{jugador}", 0, 1, LpBinary) for jugador in todos_los_jugadores}
     problema += lpSum(jugadores_vars[jugador] for jugador in todos_los_jugadores)
@@ -14,11 +20,7 @@ def jugadores_optimos_programacion_lineal(jugadores_segun_preferencias, todos_lo
 
 if __name__ == '__main__':
     args = parse_args()
-    jugadores_segun_preferencias = read_file(args.filename)
-    todos_los_jugadores = set()
-    for preferencia in jugadores_segun_preferencias:
-        for jugador in preferencia:
-            todos_los_jugadores.add(jugador)
+    jugadores = read_file(args.filename)
     
-    jugadores_optimos_programacion_lineal(jugadores_segun_preferencias, todos_los_jugadores)
+    programacion_lineal_jugadores(jugadores)
     
