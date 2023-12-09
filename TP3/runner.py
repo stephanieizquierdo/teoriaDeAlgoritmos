@@ -4,9 +4,9 @@ from tp3Lineal import programacion_lineal_jugadores
 from tp3greedy import greedy_jugadores
 
 ALL_ALGORITHMS = [
-    (greedy_jugadores, 'Greedy'),
-    # (backtracking_jugadores, 'Backtracking'),
-    # (programacion_lineal_jugadores, 'Programacion Lineal'),
+    #(greedy_jugadores, 'Greedy'),
+    #(backtracking_jugadores, 'Backtracking'),
+    (programacion_lineal_jugadores, 'Programacion Lineal'),
 ]
 
 

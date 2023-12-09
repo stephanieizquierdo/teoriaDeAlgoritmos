@@ -15,12 +15,21 @@ def programacion_lineal_jugadores(jugadores):
     problema += lpSum(jugadores_vars[jugador] for jugador in todos_los_jugadores)
     for preferencia in jugadores_segun_preferencias:
         problema += lpSum(jugadores_vars[jugador] * (jugador in preferencia) for jugador in todos_los_jugadores) >= 1
-    problema.solve()
+    problema.solve(PULP_CBC_CMD(msg=0))
+
+    jugadores_values = {jug: pulp.value(jug_var) for jug, jug_var in jugadores_vars.items()}
+    jugadores_filtrados = dict(filter(lambda pair: pair[1] >= 1, jugadores_values.items()))
+
+    jugadores_lp = list(jugadores_filtrados.keys())
+
+    return jugadores_lp
     
 
 if __name__ == '__main__':
     args = parse_args()
     jugadores = read_file(args.filename)
     
-    programacion_lineal_jugadores(jugadores)
+    solucion = programacion_lineal_jugadores(jugadores)
+
+    print(f"Jugadores minimos {len(solucion)}: {solucion}")
     
