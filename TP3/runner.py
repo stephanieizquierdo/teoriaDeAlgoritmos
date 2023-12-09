@@ -1,12 +1,14 @@
 from reader import read_file
 from tp3 import backtracking_jugadores
-from tp3Lineal import programacion_lineal_jugadores
+from tp3LinealContinua import programacion_lineal_jugadores_variables_continuas
+from tp3LinealEntera import programacion_lineal_jugadores
 from tp3greedy import greedy_jugadores
 
 ALL_ALGORITHMS = [
-    #(greedy_jugadores, 'Greedy'),
-    #(backtracking_jugadores, 'Backtracking'),
-    (programacion_lineal_jugadores, 'Programacion Lineal'),
+    (greedy_jugadores, 'Greedy'),
+    # (backtracking_jugadores, 'Backtracking'),
+    (programacion_lineal_jugadores, 'Programacion Lineal Entera'),
+    (programacion_lineal_jugadores_variables_continuas, 'Programacion Lineal con Variables Continuas'),
 ]
 
 
@@ -34,6 +36,6 @@ if __name__ == '__main__':
             print(f"Algoritmo {name}")
             solucion = algoritmo(jugadores)
             if not solucion: continue
-            print(f"Jugadores mínimos {len(solucion)}: {solucion}")
+            print(f"Jugadores mínimos {len(solucion)}: {solucion}\n")
         
         print("\n================================")
