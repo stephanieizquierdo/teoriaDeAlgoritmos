@@ -7,8 +7,8 @@ from tp3greedy import greedy_jugadores
 ALL_ALGORITHMS = [
     (greedy_jugadores, 'Greedy'),
     # (backtracking_jugadores, 'Backtracking'),
-    (programacion_lineal_jugadores, 'Programacion Lineal Entera'),
-    (programacion_lineal_jugadores_variables_continuas, 'Programacion Lineal con Variables Continuas'),
+    (programacion_lineal_jugadores, 'Programación Lineal Entera'),
+    (programacion_lineal_jugadores_variables_continuas, 'Programación Lineal con Variables Continuas'),
 ]
 
 
